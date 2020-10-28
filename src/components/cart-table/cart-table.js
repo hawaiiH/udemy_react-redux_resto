@@ -1,10 +1,10 @@
 import React from 'react';
 import './cart-table.scss';
 import {connect} from 'react-redux';
-import {removedFromCart, plus} from '../../actions';
+import {removedFromCart} from '../../actions';
 import WithRestoService from '../hoc';
 
-const CartTable = ({items, removedFromCart, RestoService, plus}) => {
+const CartTable = ({items, removedFromCart, RestoService}) => {
     if (items.length === 0) {
         return (
             <div className="cart__title">Ваш корзина пуста :(</div>
@@ -24,7 +24,6 @@ const CartTable = ({items, removedFromCart, RestoService, plus}) => {
                                 <div className="cart__item-title">{title}</div>
                                 <div className="cart__item-price">{price}$ | x{item.qtty}</div>
                                 <div onClick={() => removedFromCart(id)} className="cart__close">&times;</div>
-                                <button onClick={() => plus(id)}>+</button>
                             </div>
                         )
                     })
@@ -62,8 +61,7 @@ const mapStateToProps = ({items}) => {
 };
 
 const mapDispatchToProps = {
-    removedFromCart,
-    plus
+    removedFromCart
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(CartTable));

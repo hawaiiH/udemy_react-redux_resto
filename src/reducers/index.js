@@ -30,22 +30,6 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: true
             };
-        case 'PLUS':
-            const currState = state.items.find(item => item.id = action.payload);
-            const currInd = state.items.findIndex(item => item.id === action.payload)
-            const newIt = {
-                ...currState,
-                qtty: ++currState.qtty
-            }
-            return {
-                ...state,
-                items: [
-                    ...state.items.slice(0, currInd),
-                    newIt,
-                    ...state.items.slice(currInd + 1)
-                ],
-                totalPrice: state.totalPrice + newIt.price
-            }
         case 'ADDED_TO_CART':
             const id = action.payload;
             // console.log('iddd', id);

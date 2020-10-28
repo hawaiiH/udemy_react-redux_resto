@@ -31,19 +31,10 @@ const removedFromCart = (id) => {
     }
 };
 
-const plus = (id) => {
-    return {
-        type: 'PLUS',
-        payload: id
-    };
-};
-
-
 export {
     menuLoaded,
     menuRequested,
     menuError,
     addedToCart,
-    removedFromCart,
-    plus
+    removedFromCart
 }
